@@ -40,8 +40,18 @@
                                 <li clas="nav-item">
                                     <a class="nav-link active" aria-current="page" href="/">Home</a>
                                 </li>
-                                <li clas="nav-item">
-                                    <a class="nav-link " aria-current="page" href="/settings">Settings</a>
+                                <li clas="nav-item dropdown">
+                                    <a id ="dropdown01" class="nav-link dropdown-toggle" aria-current="page" href="#" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Settings
+                                    </a>
+                                    <ul class="dropdown-menu" aria-labelledby="dropdown01">
+                                        <li>
+                                            <a class="dropdown-item" href="/manage_emotions">Manage emotions</a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="/auth/change_password">Change password</a>
+                                        </li>
+                                    </ul>
                                 </li>
                                 <li clas="nav-item">
                                     <a class="nav-link" aria-current="page" href="/auth/logout">Logout</a>
