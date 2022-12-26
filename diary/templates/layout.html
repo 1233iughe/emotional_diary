@@ -36,21 +36,24 @@
 
                     <div class="collapse navbar-collapse" id="navbar">
                         <ul class="navbar-nav">
-                            <li clas="nav-item">
-                                <a class="nav-link active" aria-current="page" href="/">Home</a>
-                            </li>
-                            <li clas="nav-item">
-                                <a class="nav-link" aria-current="page" href="/auth/login">Login</a>
-                            </li>
-                            <li clas="nav-item">
-                                <a class="nav-link" aria-current="page" href="/auth/logout">Logout</a>
-                            </li>
-                            <li clas="nav-item">
-                                <a class="nav-link " aria-current="page" href="/auth/register">Register</a>
-                            </li>
-                            <li clas="nav-item">
-                                <a class="nav-link " aria-current="page" href="/settings">Settings</a>
-                            </li>
+                            {% if g.user %}
+                                <li clas="nav-item">
+                                    <a class="nav-link active" aria-current="page" href="/">Home</a>
+                                </li>
+                                <li clas="nav-item">
+                                    <a class="nav-link " aria-current="page" href="/settings">Settings</a>
+                                </li>
+                                <li clas="nav-item">
+                                    <a class="nav-link" aria-current="page" href="/auth/logout">Logout</a>
+                                </li>
+                            {% else %}
+                                <li clas="nav-item">
+                                    <a class="nav-link" aria-current="page" href="/auth/login">Login</a>
+                                </li>
+                                <li clas="nav-item">
+                                    <a class="nav-link " aria-current="page" href="/auth/register">Register</a>
+                                </li>
+                            {% endif %}
                         </ul>
                     </div>
                 </div>
