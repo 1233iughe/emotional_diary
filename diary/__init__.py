@@ -20,10 +20,9 @@ def create_app():
         pass
     
     from . import db
-    if not os.path.isfile(os.path.join(app.instance_path, 'diary.sqlite')):
+    if os.path.isfile(os.path.join(app.instance_path, 'diary.sqlite')):
         with app.app_context():
             db.init_db()
-            print(1)
     db.init_app(app)
 
     # Importing blueprints tells the app where to look up for the routes
