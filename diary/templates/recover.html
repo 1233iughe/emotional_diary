@@ -3,7 +3,7 @@
     Recover
 {% endblock %}
 {% block main%}
-    <form method="POST" action="/auth/login" autocomplete="off">
+    <form method="POST" action="/auth/recover" autocomplete="off">
         <h1 alignment="center">Recover your password</h1>
         <div class="form-group mb-3">
             <input
@@ -20,10 +20,10 @@
                 type="password"
                 class="form-control mx-auto w-auto"
                 id="phrase"
-                name="pharse"
+                name="phrase"
                 placeholder="Security phrase"
             >
         </div>
-        <button type="submit" class="btn btn-primary">Log In</button>
+        <button type="submit" class="btn btn-primary">Recover</button>
     </form>
 {% endblock %}
