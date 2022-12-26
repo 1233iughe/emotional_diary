@@ -170,7 +170,39 @@ def logout():
     session.clear()
     return redirect(url_for("auth.login"))
 
+
+# This route allows the user to change their password after logging.
 @auth.route("/change_password", methods=['POST','GET'])
 @login_required
 def change_password():
-    return render_template("change_password.html")
+    if request.method == "POST":
+        # Gettin username and password from request
+        oldPassword = request.form.get('old_password')
+        password = request.form.get('password')
+        confirmation= request.form.get('confirmation')
+
+        # Setting cursor to database
+        db = get_db()
+
+        # Checking the user inputted password and confirmation
+        if not oldPassword:
+            return apology("Must input password")
+        elif not password:
+            return apology("Must input new password")
+        elif not confirmation:
+            return apology("Must input confirmation")
+        else:
+            user_id = session.get("user_id")
+            user = db.execute("SELECT * FROM users WHERE id = ?", (user_id,)).fetchone()
+            if check_password_hash(user['hash'],oldPassword):
+                # Updating the database with new password
+                
+                db.execute("UPDATE users SET hash = ? WHERE id = ?;", (generate_password_hash(password), user_id))
+                db.commit()
+                return redirect(url_for("views.index"))
+            else:
+                return apology("Incorrect password")
+        
+    else:
+        return render_template("change_password.html")
+    
