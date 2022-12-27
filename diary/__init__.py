@@ -20,7 +20,7 @@ def create_app():
         pass
     
     from . import db
-    if os.path.isfile(os.path.join(app.instance_path, 'diary.sqlite')):
+    if not os.path.isfile(os.path.join(app.instance_path, 'diary.db')):
         with app.app_context():
             db.init_db()
     db.init_app(app)
