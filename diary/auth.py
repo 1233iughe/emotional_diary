@@ -194,9 +194,10 @@ def change_password():
         else:
             user_id = session.get("user_id")
             user = db.execute("SELECT * FROM users WHERE id = ?", (user_id,)).fetchone()
+            
             if check_password_hash(user['hash'],oldPassword):
-                # Updating the database with new password
                 
+                # Updating the database with new password
                 db.execute("UPDATE users SET hash = ? WHERE id = ?;", (generate_password_hash(password), user_id))
                 db.commit()
                 return redirect(url_for("views.index"))
