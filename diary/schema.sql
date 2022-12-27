@@ -17,7 +17,8 @@ CREATE TABLE users(
 CREATE TABLE settings(
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     user_id INTEGER NOT NULL,
-    colors TEXT NOT NULL,
+    color TEXT NOT NULL,
+    emotion TEXT NOT NULL,
     FOREIGN KEY (user_id) REFERENCES user (id)
 );
 
