@@ -8,7 +8,7 @@ views = Blueprint('views', __name__)
 @views.route("/", methods=['POST','GET'])
 @login_required
 def index():
-    # show calendar and allow to the user to click on individual days
+    
     db = get_db()
     user_id = session.get('user_id')
     
