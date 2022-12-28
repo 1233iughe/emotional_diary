@@ -1,6 +1,6 @@
 # emotional_diary v1.0.0
 
-## Video demo: 
+## Video demo: https://youtu.be/dOVb-wrIo10
 
 ## Description
   A web app builded using Flask, in which you can pair emotions with colors and have a daily register of which emotions dominated your day. This is my CS50 final project and my first project of this scope! Any comments/suggestions are welcome. Code design based on CS50 finance and Flask tutorial https://flask.palletsprojects.com/en/2.2.x/tutorial/
