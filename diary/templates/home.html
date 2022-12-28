@@ -3,5 +3,32 @@
     Home
 {% endblock %}
 {% block main%}
-
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-10 content col-xs-offset-2">
+            <table class="table text-center calendar-base">
+                <tr>
+                    <th>Day</th>
+                    <th>Emotion</th>
+                </tr>
+                {% for dict in register%}
+                    <tr>
+                        <td>{{ dict["date1"] }}</td>
+                        <td style={{ ["background-color:","#",dict["color"][2:]]|join() }}> {{ dict["emotion"] }}</td> 
+                    </tr>
+                {% endfor %}
+            </table>
+            <form action="/" method="post">
+                <select name="emotions" id="select_emotions">
+                    {% for dict in settings %}
+                        <option value={{ dict["emotion"] }} style={{ ["background-color:","#",dict["color"][2:]]|join() }}>{{ dict["emotion"] }}</option>
+                    {% endfor%}
+                </select>
+                <button class="btn btn-outline-primary" type="submit">
+                    Add
+                </button>
+            </form>
+        </div>
+    </div>
+    
 {% endblock %}
