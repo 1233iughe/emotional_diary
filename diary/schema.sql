@@ -12,8 +12,7 @@ CREATE TABLE users(
 );
 
 --This table is connected to 'users' by user_id column. There should be a row and only
---a row per user. Here we store the user configurationf of emotion-color pairs as strings
---to be converted back in dictionaries using json module function json.loads().
+--a row per user. 
 CREATE TABLE settings(
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     user_id INTEGER NOT NULL,
@@ -27,7 +26,8 @@ CREATE TABLE settings(
 CREATE TABLE register(
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     user_id INTEGER NOT NULL,
-    date TEXT NOT NULL,
-    value TEXT NOT NULL,
+    date1 TEXT NOT NULL,
+    color TEXT NOT NULL,
+    emotion TEXT NOT NULL,
     FOREIGN KEY (user_id) REFERENCES user (id)
 );
