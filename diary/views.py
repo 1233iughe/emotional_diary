@@ -8,8 +8,28 @@ views = Blueprint('views', __name__)
 @views.route("/", methods=['POST','GET'])
 @login_required
 def index():
-    # TODO: show calendar and allow to the user to click on individual days
-    return render_template("home.html")
+    # show calendar and allow to the user to click on individual days
+    db = get_db()
+    user_id = session.get('user_id')
+    
+    if request.method == "POST":
+        # Get emotion and color 
+        emotions = request.form.get('emotions')
+        color = db.execute("SELECT color FROM settings  WHERE user_id = ? AND emotion = ?", (user_id, emotions)).fetchone()
+        
+        # Update register of days and emotions
+        db.execute("INSERT INTO register (date1, user_id, color, emotion) VALUES(date('now'), ?, ?, ?)", (user_id, color["color"], emotions))
+        db.commit()
+        settings = db.execute("SELECT * FROM settings WHERE user_id = ?",(user_id,)).fetchall()
+        register = db.execute("SELECT * FROM register WHERE user_id = ?", (user_id,)).fetchall()
+
+        # Update template with new values
+        return render_template("home.html", register=register, settings=settings)
+    else:
+        # Charge template with recorded values
+        settings = db.execute("SELECT * FROM settings WHERE user_id = ?",(user_id,)).fetchall()
+        register = db.execute("SELECT * FROM register WHERE user_id = ?", (user_id,)).fetchall()
+        return render_template("home.html", register=register, settings=settings)
 
 @views.route("/manage_emotions", methods=['POST','GET'])
 @login_required
