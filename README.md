@@ -1,4 +1,4 @@
-# emotional_diary v0.5.0-alpha
+# emotional_diary v0.1.0-alpha
 
 ## Video demo: https://youtu.be/dOVb-wrIo10
 
