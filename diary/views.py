@@ -31,9 +31,9 @@ def index():
         register = db.execute("SELECT * FROM register WHERE user_id = ?", (user_id,)).fetchall()
         return render_template("home.html", register=register, settings=settings)
 
-@views.route("/manage_emotions", methods=['POST','GET'])
+@views.route("/add_emotion", methods=['POST','GET'])
 @login_required
-def manage_emotions():
+def add_emotion():
     # TODO: Allow user to create a list of emotion-color pairs
     # Initialize database connections and get user id
     db = get_db()

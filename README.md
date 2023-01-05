@@ -63,7 +63,7 @@ The routes inside are:
 #### views.py
 Here is implemented the logic allowing the user to update their emotion-color pairs and to assign them to the current day. The routes cotained here are:
 - index: Allows the user to add to the current day a emotion-color pair. It renders automatically an updated template with each addtition.
-- manage_emotions: Adds emotion-color pairs to the data base and shows them in a table to the user.
+- add_emotion: Adds emotion-color pairs to the data base and shows them in a table to the user.
 - delete_emotions: Allows the user to delete any given pair.
 
 #### db.py
@@ -104,7 +104,7 @@ Base template implementing the navigation bar and the buttons **Login**, **Logou
 Implements a table that is dynamically expanded using Jinjas conatining the columns **date** and **emotion**. The **emotion** cells contain the emotion in text and its background color is the one defined by the user. Associated with the **index** route in **views.py**.
 
 #### manage_emotions.html
-Implements a 2 field form where the user can input an emotion and a color (in python style hex). The button provided adds the color to the table (expanded using Jinjas). The emotion-color pairs are displayed as in **home.html**. Also implements a button in each row to delete it. Associated with **manage_emotions** route and **delete_emotion** route.
+Implements a 2 field form where the user can input an emotion and a color (in python style hex). The button provided adds the color to the table (expanded using Jinjas). The emotion-color pairs are displayed as in **home.html**. Also implements a button in each row to delete it. Associated with **add_emotions** route and **delete_emotion** route.
 
 #### change_password.html
 Implements 3 field form: first for user authenticathion using password, second and third for new password regitration.
